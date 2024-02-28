@@ -9,7 +9,7 @@
   <a>Jindong Wang<sup>2</sup></a>&emsp;
   <a>Xing Xie<sup>2</sup></a>&emsp;
   <a>Yue Zhang<sup>3</sup></a>&emsp;
-  <a>Shikun Zhang<sup>†1</sup></a>&emsp;
+  <a>Shikun Zhang<sup>1</sup></a>&emsp;
   <p> <sup>1</sup> Peking University, <sup>2</sup> Microsoft Research, <sup>3</sup> Westlake University.</p>
 </div>
 
