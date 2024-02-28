@@ -22,6 +22,9 @@
     <img src="figures/pipeline.png" alt="KIEval Pipeline" width="600" class="center">
 </a>
 </div>
+
+This is the official repository for [KIEval: A Knowledge-grounded Interactive Evaluation Framework for Large Language Models](https://arxiv.org/abs/2402.15043).
+
 Automatic evaluation methods for large language models (LLMs) are hindered by data contamination, leading to inflated assessments of their effectiveness. Existing strategies, which aim to detect contaminated texts, focus on quantifying contamination status instead of accurately gauging model performance. In this paper, we introduce KIEval, a Knowledge-grounded Interactive Evaluation framework, which incorporates an LLM-powered "interactor" role for the first time to accomplish a dynamic contamination-resilient evaluation. Starting with a question in a conventional LLM benchmark involving domain-specific knowledge, KIEval utilizes dynamically generated, multi-round, and knowledge-focused dialogues to determine whether a model's response is merely a recall of benchmark answers or demonstrates a deep comprehension to apply knowledge in more complex conversations. Extensive experiments on seven leading LLMs across five datasets validate KIEval's effectiveness and generalization. We also reveal that data contamination brings no contribution or even negative effect to models' real-world applicability and understanding, and existing contamination detection methods for LLMs can only identify contamination in pre-training but not during supervised fine-tuning.
 
 
@@ -30,12 +33,14 @@ Automatic evaluation methods for large language models (LLMs) are hindered by da
 To get started, first clone the repository and setup the enviroment:
 
 ```bash
-git clone <repo>
-cd <repo>
+git clone https://github.com/zhuohaoyu/KIEval.git
+cd KIEval
 pip install -r requirements.txt
 ```
 
-To reproduce KIEval results, first start a text-generation-inference (huggingface.co/docs/text-generation-inference/en/index) instance with your candidate model:
+We provide a modular implementation of our method, currently we support evaluating models locally with Huggingface's Transformers, and remote models with text-generation-inference or other APIs.
+
+To reproduce KIEval results, we recommend starting a [text-generation-inference](https://huggingface.co/docs/text-generation-inference/en/index) instance with your model:
 
 ```bash
 model=meta-llama/Llama-2-7b-chat-hf
@@ -44,13 +49,13 @@ volume=$PWD/data # share a volume with the Docker container to avoid downloading
 docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data ghcr.io/huggingface/text-generation-inference:1.4 --model-id $model
 ```
 
- Then, generate an evaluation config with our script:
+ Then, generate an evaluation config file with our script:
 
 ```bash
 python scripts/generate-basic.py \
     --template ./config/template-basic.json \
     --dataset arc_challenge \
-    --base_url http://your-tgi-url:port \
+    --base_url http://your-host-url:8080 \
     --model_name llama-2-7b-chat-hf \
     --model_path meta-llama/Llama-2-7b-chat-hf \
     --openai_api_base https://api.openai.com/v1/ \
