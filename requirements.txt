@@ -6,7 +6,6 @@ pandas
 tqdm
 openai
 requests
-ray
 text-generation
 colorlog
 termcolor
