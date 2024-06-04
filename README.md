@@ -23,7 +23,7 @@
 </a>
 </div>
 
-This is the official repository for [KIEval: A Knowledge-grounded Interactive Evaluation Framework for Large Language Models](https://arxiv.org/abs/2402.15043).
+This is the official repository for [KIEval: A Knowledge-grounded Interactive Evaluation Framework for Large Language Models](https://arxiv.org/abs/2402.15043), accepted to the main conference of 62nd Annual Meeting of the Association for Computational Linguistics (**ACL 2024**).
 
 Automatic evaluation methods for large language models (LLMs) are hindered by data contamination, leading to inflated assessments of their effectiveness. Existing strategies, which aim to detect contaminated texts, focus on quantifying contamination status instead of accurately gauging model performance. In this paper, we introduce KIEval, a Knowledge-grounded Interactive Evaluation framework, which incorporates an LLM-powered "interactor" role for the first time to accomplish a dynamic contamination-resilient evaluation. Starting with a question in a conventional LLM benchmark involving domain-specific knowledge, KIEval utilizes dynamically generated, multi-round, and knowledge-focused dialogues to determine whether a model's response is merely a recall of benchmark answers or demonstrates a deep comprehension to apply knowledge in more complex conversations. Extensive experiments on seven leading LLMs across five datasets validate KIEval's effectiveness and generalization. We also reveal that data contamination brings no contribution or even negative effect to models' real-world applicability and understanding, and existing contamination detection methods for LLMs can only identify contamination in pre-training but not during supervised fine-tuning.
 
@@ -76,8 +76,10 @@ This repository provides all settings necessary for researchers to reproduce the
 
 
 ## Citation
+✨ If you find our work helpful, please consider citing with:
 
-```
+
+```bibtex
 @misc{yu2024kieval,
       title={KIEval: A Knowledge-grounded Interactive Evaluation Framework for Large Language Models}, 
       author={Zhuohao Yu and Chang Gao and Wenjin Yao and Yidong Wang and Wei Ye and Jindong Wang and Xing Xie and Yue Zhang and Shikun Zhang},
