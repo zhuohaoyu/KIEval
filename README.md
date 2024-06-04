@@ -30,7 +30,7 @@ Automatic evaluation methods for large language models (LLMs) are hindered by da
 
 ## Quick Start
 
-To get started, first clone the repository and setup the enviroment:
+To get started, first clone the repository and setup the environment:
 
 ```bash
 git clone https://github.com/zhuohaoyu/KIEval.git
@@ -40,7 +40,7 @@ pip install -r requirements.txt
 
 We provide a modular implementation of our method, currently we support evaluating models locally with Huggingface's Transformers, and remote models with text-generation-inference or other APIs.
 
-To reproduce KIEval results, we recommend starting a [text-generation-inference](https://huggingface.co/docs/text-generation-inference/en/index) instance with your model:
+To reproduce results in our paper or evaluate new models with KIEval, we recommend starting a [text-generation-inference](https://huggingface.co/docs/text-generation-inference/en/index) instance with your model:
 
 ```bash
 model=meta-llama/Llama-2-7b-chat-hf
@@ -49,23 +49,23 @@ volume=$PWD/data # share a volume with the Docker container to avoid downloading
 docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data ghcr.io/huggingface/text-generation-inference:1.4 --model-id $model
 ```
 
- Then, generate an evaluation config file with our script:
+Then, generate an evaluation config file with our script:
 
 ```bash
 python scripts/generate-basic.py \
-    --template ./config/template-basic.json \
-    --dataset arc_challenge \
-    --base_url http://your-host-url:8080 \
-    --model_name llama-2-7b-chat-hf \
-    --model_path meta-llama/Llama-2-7b-chat-hf \
-    --openai_api_base https://api.openai.com/v1/ \
-    --openai_key your_openai_key \
-    --openai_model gpt-4-1106-preview \
-    --output_path ./result \
-    --generate_path ./config/generated.json
+    --template ./config/template-basic.json \ # a template config file we provide
+    --dataset arc_challenge \ # dataset name, please refer to datasets/ for all supported datasets
+    --base_url http://your-host-url:8080 \ # replace with your host url, if you start the text-generation-inference locally, use http://localhost:8080
+    --model_name llama-2-7b-chat-hf \ # any name you like
+    --model_path meta-llama/Llama-2-7b-chat-hf \ # Huggingface model ID or local model path
+    --openai_api_base https://api.openai.com/v1/ \ # OpenAI API base url, you could replace with proxy URL if needed
+    --openai_key your_openai_key \ # replace with your OpenAI API key
+    --openai_model gpt-4-1106-preview \ 
+    --output_path ./result \ # output path for evaluation results
+    --generate_path ./config/generated.json # output path for generated config file
 ```
 
-Finally, run the evaluation process:
+Finally, run the evaluation process with the generated config file and wait for the results :)
 
 ```bash
 python run.py -c ./config/generated.json
