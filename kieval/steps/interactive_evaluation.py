@@ -10,6 +10,7 @@ from base64 import urlsafe_b64encode
 from tqdm import tqdm
 import logging, os, json, codecs
 import jsonlines
+import math
 import random
 
 from kieval.prompts import PromptPostprocessor, TriloguePrompter
@@ -18,6 +19,15 @@ from kieval.utils import parse_json
 # EVALUATOR_METRICS = ["conciseness", "relevance", "coherence", "accuracy", "reasoning"]
 
 EVALUATOR_METRICS = ["accuracy", "logic", "relevance", "coherence", "conciseness"]
+
+def weighted_mean(scores):
+    score_mapper = {0: 0.0, 1: 1.0, 2: 3.0, 3: 7.0, 4: 10.0 }
+    weights = [math.exp(-0.2 * index) for index in range(len(scores))]
+    return (
+        sum(score_mapper[score] * weight for score, weight in zip(scores, weights))
+        / sum(weights)
+        * 10.0
+    )
 
 
 class Conversation:
@@ -110,17 +120,20 @@ class Triologue(Conversation):
             if len(values) == 0:
                 j[key] = None
             else:
+                kieval_score = weighted_mean(values)
                 try:
                     j[key] = {
                         "min": min(values),
                         "max": max(values),
                         "mean": sum(values) / len(values),
+                        "kieval_score": kieval_score,
                     }
                 except:
                     print(values)
                     raise ValueError("Error when aggregating results.")
         values = [e.get("overall_score", None) for e in self.evaluation_results]
         values = [v for v in values if v is not None]
+        kieval_score = weighted_mean(values)
         if len(values) == 0:
             j["overall_score"] = None
         else:
@@ -128,6 +141,7 @@ class Triologue(Conversation):
                 "min": min(values),
                 "max": max(values),
                 "mean": sum(values) / len(values),
+                "kieval_score": kieval_score,
             }
         self.aggregated_result = j
         return j
@@ -406,7 +420,7 @@ class InteractiveEvaluationStep(BaseStep):
                 if res[key] is None:
                     value = None
                 else:
-                    value = res[key].get("mean", None)
+                    value = res[key].get("kieval_score", None)
                 if value is not None:
                     aggregated_results[key].append(value)
 
@@ -420,8 +434,7 @@ class InteractiveEvaluationStep(BaseStep):
                 "nonempty_values": len(aggregated_results[key]),
                 "mean": sum(aggregated_results[key]) / len(aggregated_results[key]),
                 "min": min(aggregated_results[key]),
-                "max": max(aggregated_results[key]),
-                "counter": value_counter,
+                "max": max(aggregated_results[key])
             }
         self.evaluation_results["overall"] = ret
         self.evaluation_results["hash"] = self.step_hash
@@ -441,7 +454,7 @@ class InteractiveEvaluationStep(BaseStep):
             role: role_name_mapper(config) for role, config in self.roles_config.items()
         }
         self.logger.info(
-            f"Overall evaluation results:\n{json.dumps(ret, indent=2, ensure_ascii=False)}"
+            f"KIEval scores:\n{json.dumps(ret, indent=2, ensure_ascii=False)}"
         )
 
     def preprocess(self, context):
