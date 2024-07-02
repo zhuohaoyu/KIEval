@@ -7,18 +7,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .author-block { display: inline-block; margin-right: 5px; }
-        .author-block sup { vertical-align: super; font-size: 0.8em; }
+        .author-block sup { vertical-align: super; font-size: 0.5em; }
         .external-link { margin-right: 5px; }
         .image-container { max-width: 1200px; margin: 0 auto; }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans">
+<body class="bg-slate-100 text-slate-900 font-sans">
 
     <!-- Hero Section -->
-    <header class="text-gray-900">
-        <div class="container mx-auto px-6 py-12">
+    <header class="text-slate-900 bg-slate-300">
+        <div class="container mx-auto px-6 py-12 text-center">
             <h1 class="text-4xl font-bold mb-4">KIEval: A Knowledge-grounded Interactive Evaluation Framework for Large Language Models</h1>
-            <div class="is-size-5 publication-authors mb-4">
+            <div class="is-size-8 publication-authors mb-4">
                 <span class="author-block">Zhuohao Yu<sup>1</sup></span>,
                 <span class="author-block">Chang Gao<sup>1</sup></span>,
                 <span class="author-block">Wenjin Yao<sup>1</sup></span>,
@@ -29,16 +29,19 @@
                 <span class="author-block">Yue Zhang<sup>3</sup></span>,
                 <span class="author-block">Shikun Zhang<sup>1</sup></span>
             </div>
-            <div class="is-size-5 publication-authors mb-8">
+            <div class="is-size-8 publication-authors mb-8">
                 <span class="author-block">Peking University<sup>1</sup></span>,
                 <span class="author-block">Microsoft Research<sup>2</sup></span>,
                 <span class="author-block">Westlake University<sup>3</sup></span>
                 <br>ACL 2024
                 <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding Author</small></span>
             </div>
-            <div class="flex space-x-4">
-                <a href="https://arxiv.org/pdf/2402.15043.pdf" class="bg-gray-900 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition">Paper</a>
-                <a href="https://github.com/zhuohaoyu/KIEval" class="bg-transparent border-2 border-gray-900 text-gray-900 px-6 py-2 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition">Code</a>
+            <div class="flex justify-center space-x-4">
+              <a href="https://github.com/zhuohaoyu/KIEval" class="bg-slate-900 text-white px-6 py-2 rounded-full font-semibold hover:bg-slate-700 transition">Code</a>
+                <a href="https://arxiv.org/pdf/2402.15043.pdf" class="bg-transparent border-2 border-slate-900 text-slate-900 px-6 py-2 rounded-full font-semibold hover:bg-slate-900 hover:text-white transition">Paper</a>
+                <a href="#" class="bg-transparent border-2 border-slate-900 text-slate-900 px-6 py-2 rounded-full font-semibold hover:bg-slate-900 hover:text-white transition">Leaderboard (Coming Soon)</a>
+
+                
             </div>
         </div>
     </header>
@@ -48,7 +51,7 @@
         <!-- Overview -->
       
         <section class="mb-16">
-            <p class="text-lg leading-relaxed">As the field of artificial intelligence marvels at the performance of large language models like GPT-4 and Claude 3, a crucial question arises: Are we truly evaluating these models objectively? The current evaluation methods for large models are plagued by data contamination.</p>
+            <p class="text-lg leading-relaxed">As the field of artificial intelligence marvels at the performance of large language models like GPT-4 and Claude 3, a crucial question arises: Are we truly evaluating these models objectively and effectively? The current evaluation methods for large models are plagued by data contamination.</p>
             <div class="image-container my-8">
               <img src="static/images/compare.png" alt="Comparison of KIEval and traditional methods" class="rounded-lg shadow-lg object-cover">
             </div>
@@ -79,107 +82,107 @@
                 <li><strong>Correlation with Human Evaluation:</strong> KIEval scores correlate highly with human evaluations, proving its effectiveness and alignment with human judgment in dialogue quality.</li>
                 <section class="mb-16">
                   <div class="overflow-x-auto">
-                      <table class="min-w-full divide-y divide-gray-200">
-                          <thead class="bg-gray-50">
+                      <table class="min-w-full divide-y divide-slate-200">
+                          <thead class="bg-slate-50">
                               <tr>
-                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Metric</th>
-                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Pearson</th>
-                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Spearman</th>
-                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Kendall-Tau</th>
-                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Variance</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-slate-500 uppercase tracking-wider">Metric</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-slate-500 uppercase tracking-wider">Pearson</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-slate-500 uppercase tracking-wider">Spearman</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-slate-500 uppercase tracking-wider">Kendall-Tau</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-slate-500 uppercase tracking-wider">Variance</th>
                               </tr>
                           </thead>
-                          <tbody class="bg-white divide-y divide-gray-200">
-                              <tr class="bg-gray-100">
-                                  <td class="px-4 py-2 text-sm text-gray-500">METEOR</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.016</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.023</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.021</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.012</td>
+                          <tbody class="bg-white divide-y divide-slate-200">
+                              <tr class="bg-slate-100">
+                                  <td class="px-4 py-2 text-sm text-slate-500">METEOR</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.016</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.023</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.021</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.012</td>
                               </tr>
                               <tr>
-                                  <td class="px-4 py-2 text-sm text-gray-500">ROUGE-1</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.259</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.316</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.226</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.016</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">ROUGE-1</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.259</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.316</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.226</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.016</td>
                               </tr>
-                              <tr class="bg-gray-100">
-                                  <td class="px-4 py-2 text-sm text-gray-500">ROUGE-2</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.280</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.303</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.223</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.007</td>
-                              </tr>
-                              <tr>
-                                  <td class="px-4 py-2 text-sm text-gray-500">ROUGE-L</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.209</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.268</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.200</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.007</td>
-                              </tr>
-                              <tr class="bg-gray-100">
-                                  <td class="px-4 py-2 text-sm text-gray-500">BERTScore</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.189</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.336</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.250</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.001</td>
+                              <tr class="bg-slate-100">
+                                  <td class="px-4 py-2 text-sm text-slate-500">ROUGE-2</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.280</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.303</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.223</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.007</td>
                               </tr>
                               <tr>
-                                  <td class="px-4 py-2 text-sm text-gray-500">MT-Bench</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.520</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.494</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.405</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">9.360</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">ROUGE-L</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.209</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.268</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.200</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.007</td>
                               </tr>
-                              <tr class="bg-gray-100">
-                                  <td class="px-4 py-2 text-sm text-gray-700 font-bold">Ours</td>
-                                  <td class="px-4 py-2 text-sm text-gray-700 font-bold"></td>
-                                  <td class="px-4 py-2 text-sm text-gray-700 font-bold"></td>
-                                  <td class="px-4 py-2 text-sm text-gray-700 font-bold"></td>
-                                  <td class="px-4 py-2 text-sm text-gray-700 font-bold"></td>
-                              </tr>
-                              <tr>
-                                  <td class="px-4 py-2 text-sm text-gray-500">Accuracy</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.761</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.727</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.653</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">2.010</td>
-                              </tr>
-                              <tr class="bg-gray-100">
-                                  <td class="px-4 py-2 text-sm text-gray-500">Logic</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.768</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.735</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.661</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">1.842</td>
+                              <tr class="bg-slate-100">
+                                  <td class="px-4 py-2 text-sm text-slate-500">BERTScore</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.189</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.336</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.250</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.001</td>
                               </tr>
                               <tr>
-                                  <td class="px-4 py-2 text-sm text-gray-500">Relevance</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.633</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.643</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.543</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">1.152</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">MT-Bench</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.520</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.494</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.405</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">9.360</td>
                               </tr>
-                              <tr class="bg-gray-100">
-                                  <td class="px-4 py-2 text-sm text-gray-500">Coherence</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.750</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.740</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.644</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">1.365</td>
+                              <tr class="bg-slate-100">
+                                  <td class="px-4 py-2 text-sm text-slate-700 font-bold">Ours</td>
+                                  <td class="px-4 py-2 text-sm text-slate-700 font-bold"></td>
+                                  <td class="px-4 py-2 text-sm text-slate-700 font-bold"></td>
+                                  <td class="px-4 py-2 text-sm text-slate-700 font-bold"></td>
+                                  <td class="px-4 py-2 text-sm text-slate-700 font-bold"></td>
                               </tr>
                               <tr>
-                                  <td class="px-4 py-2 text-sm text-gray-500">Conciseness</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.611</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.604</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.504</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.833</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">Accuracy</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.761</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.727</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.653</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">2.010</td>
                               </tr>
-                              <tr class="bg-gray-100">
-                                  <td class="px-4 py-2 text-sm text-gray-500">Overall</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.814</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.789</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">0.721</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">1.512</td>
+                              <tr class="bg-slate-100">
+                                  <td class="px-4 py-2 text-sm text-slate-500">Logic</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.768</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.735</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.661</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">1.842</td>
+                              </tr>
+                              <tr>
+                                  <td class="px-4 py-2 text-sm text-slate-500">Relevance</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.633</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.643</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.543</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">1.152</td>
+                              </tr>
+                              <tr class="bg-slate-100">
+                                  <td class="px-4 py-2 text-sm text-slate-500">Coherence</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.750</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.740</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.644</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">1.365</td>
+                              </tr>
+                              <tr>
+                                  <td class="px-4 py-2 text-sm text-slate-500">Conciseness</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.611</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.604</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.504</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.833</td>
+                              </tr>
+                              <tr class="bg-slate-100">
+                                  <td class="px-4 py-2 text-sm text-slate-500">Overall</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.814</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.789</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">0.721</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">1.512</td>
                               </tr>
                           </tbody>
                       </table>
@@ -189,76 +192,76 @@
                 <li><strong>Model Biases:</strong> Experiments show that while biases exist at the sample level, overall evaluation scores by different evaluator models are strongly correlated, indicating biases do not significantly affect conclusions.</li>
                 <section class="mb-16">
                   <div class="overflow-x-auto">
-                      <table class="min-w-full divide-y divide-gray-200">
-                          <thead class="bg-gray-50">
+                      <table class="min-w-full divide-y divide-slate-200">
+                          <thead class="bg-slate-50">
                               <tr>
-                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Model</th>
-                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Evaluator</th>
-                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Accuracy</th>
-                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Logic</th>
-                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Relevance</th>
-                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Coherence</th>
-                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Conciseness</th>
-                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Overall</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-slate-500 uppercase tracking-wider">Model</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-slate-500 uppercase tracking-wider">Evaluator</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-slate-500 uppercase tracking-wider">Accuracy</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-slate-500 uppercase tracking-wider">Logic</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-slate-500 uppercase tracking-wider">Relevance</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-slate-500 uppercase tracking-wider">Coherence</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-slate-500 uppercase tracking-wider">Conciseness</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-slate-500 uppercase tracking-wider">Overall</th>
                               </tr>
                           </thead>
-                          <tbody class="bg-white divide-y divide-gray-200">
+                          <tbody class="bg-white divide-y divide-slate-200">
                               <tr>
-                                  <td class="px-4 py-2 text-sm text-gray-500" rowspan="2">GPT-3.5</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">GPT-4</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">94.6</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">94.7</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">98.5</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">96.1</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">97.3</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">95.5</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500" rowspan="2">GPT-3.5</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">GPT-4</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">94.6</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">94.7</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">98.5</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">96.1</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">97.3</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">95.5</td>
                               </tr>
                               <tr>
-                                  <td class="px-4 py-2 text-sm text-gray-500">Claude-3</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">98.6</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">98.8</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">99.8</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">99.4</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">99.0</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">98.7</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">Claude-3</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">98.6</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">98.8</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">99.8</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">99.4</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">99.0</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">98.7</td>
                               </tr>
                               <tr>
-                                  <td class="px-4 py-2 text-sm text-gray-500" rowspan="2">LLaMA-2 70B</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">GPT-4</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">81.9</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">82.8</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">92.2</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">85.3</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">75.6</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">84.1</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500" rowspan="2">LLaMA-2 70B</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">GPT-4</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">81.9</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">82.8</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">92.2</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">85.3</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">75.6</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">84.1</td>
                               </tr>
                               <tr>
-                                  <td class="px-4 py-2 text-sm text-gray-500">Claude-3</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">98.3</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">98.7</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">98.2</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">96.9</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">84.6</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">96.4</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">Claude-3</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">98.3</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">98.7</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">98.2</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">96.9</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">84.6</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">96.4</td>
                               </tr>
                               <tr>
-                                  <td class="px-4 py-2 text-sm text-gray-500" rowspan="2">LLaMA-2 7B</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">GPT-4</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">70.6</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">71.6</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">90.4</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">77.9</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">71.7</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">74.4</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500" rowspan="2">LLaMA-2 7B</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">GPT-4</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">70.6</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">71.6</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">90.4</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">77.9</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">71.7</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">74.4</td>
                               </tr>
                               <tr>
-                                  <td class="px-4 py-2 text-sm text-gray-500">Claude-3</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">90.9</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">91.8</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">98.0</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">95.0</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">85.2</td>
-                                  <td class="px-4 py-2 text-sm text-gray-500">91.0</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">Claude-3</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">90.9</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">91.8</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">98.0</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">95.0</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">85.2</td>
+                                  <td class="px-4 py-2 text-sm text-slate-500">91.0</td>
                               </tr>
                           </tbody>
                       </table>
@@ -281,7 +284,7 @@
         <section>
             <h2 class="text-3xl font-bold mb-4">Citation</h2>
             <p>If you find our work helpful, please consider citing us with:</p><br>
-            <pre class="bg-gray-200 p-4 rounded-lg overflow-x-auto text-sm">@misc{yu2024kieval,
+            <pre class="bg-slate-200 p-4 rounded-lg overflow-x-auto text-sm">@misc{yu2024kieval,
   title={KIEval: A Knowledge-grounded Interactive Evaluation Framework for Large Language Models}, 
   author={Zhuohao Yu and Chang Gao and Wenjin Yao and Yidong Wang and Wei Ye and Jindong Wang and Xing Xie and Yue Zhang and Shikun Zhang},
   year={2024},
@@ -294,7 +297,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-slate-800 text-white py-8">
         <div class="container mx-auto px-6 text-center">
             <p>&copy; 2024 Zhuohao Yu. All rights reserved.</p>
         </div>
