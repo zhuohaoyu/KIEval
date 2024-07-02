@@ -1,198 +1,303 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="DESCRIPTION META TAG">
-  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
-
-
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-  <title>KIEval: A Knowledge-grounded Interactive Evaluation Framework for Large Language Models</title>
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-  rel="stylesheet">
-
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script src="static/js/bulma-carousel.min.js"></script>
-  <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIEval: A Knowledge-grounded Interactive Evaluation Framework for Large Language Models</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .author-block { display: inline-block; margin-right: 5px; }
+        .author-block sup { vertical-align: super; font-size: 0.8em; }
+        .external-link { margin-right: 5px; }
+        .image-container { max-width: 1200px; margin: 0 auto; }
+    </style>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-900 font-sans">
 
-
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">KIEval: A Knowledge-grounded Interactive Evaluation Framework for Large Language Models</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
-              <span class="author-block">Zhuohao Yu<sup>1</sup>,</span>
-                <span class="author-block">Chang Gao<sup>1</sup>,</span>
-                <span class="author-block">Wenjin Yao<sup>1</sup>,</span>
-                <span class="author-block">Yidong Wang<sup>1</sup>,</span><br>
-                <span class="author-block">Wei Ye<sup>1*</sup>,</span>
-                <span class="author-block">Jindong Wang<sup>2</sup>,</span>
-                <span class="author-block">Xing Xie<sup>2</sup>,</span>
-                <span class="author-block">Yue Zhang<sup>3</sup>,</span>
+    <!-- Hero Section -->
+    <header class="text-gray-900">
+        <div class="container mx-auto px-6 py-12">
+            <h1 class="text-4xl font-bold mb-4">KIEval: A Knowledge-grounded Interactive Evaluation Framework for Large Language Models</h1>
+            <div class="is-size-5 publication-authors mb-4">
+                <span class="author-block">Zhuohao Yu<sup>1</sup></span>,
+                <span class="author-block">Chang Gao<sup>1</sup></span>,
+                <span class="author-block">Wenjin Yao<sup>1</sup></span>,
+                <span class="author-block">Yidong Wang<sup>1</sup></span>,
+                <span class="author-block">Wei Ye<sup>1*</sup></span>,
+                <span class="author-block">Jindong Wang<sup>2</sup></span>,
+                <span class="author-block">Xing Xie<sup>2</sup></span>,
+                <span class="author-block">Yue Zhang<sup>3</sup></span>,
                 <span class="author-block">Shikun Zhang<sup>1</sup></span>
-                  
-                  </div>
-
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block">Peking University<sup>1</sup>, Microsoft Research<sup>2</sup>, Westlake University<sup>3</sup>, <br>ACL 2024</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding Author</small></span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/2402.15043.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <!-- Supplementary PDF link -->
-                    <!-- <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a> -->
-                  </span>
-
-                  <!-- Github link -->
-                  <span class="link-block">
-                    <a href="https://github.com/zhuohaoyu/KIEval" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <!-- ArXiv abstract Link -->
-                <!-- <span class="link-block">
-                  <a href="https://arxiv.org/abs/2402.15043" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a> -->
-              </span>
             </div>
-          </div>
+            <div class="is-size-5 publication-authors mb-8">
+                <span class="author-block">Peking University<sup>1</sup></span>,
+                <span class="author-block">Microsoft Research<sup>2</sup></span>,
+                <span class="author-block">Westlake University<sup>3</sup></span>
+                <br>ACL 2024
+                <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding Author</small></span>
+            </div>
+            <div class="flex space-x-4">
+                <a href="https://arxiv.org/pdf/2402.15043.pdf" class="bg-gray-900 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition">Paper</a>
+                <a href="https://github.com/zhuohaoyu/KIEval" class="bg-transparent border-2 border-gray-900 text-gray-900 px-6 py-2 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition">Code</a>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </header>
 
-
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <h2 class="subtitle has-text-centered">
-  We propose <b>KIEval</b>, an open-source framework, uses dynamic LLM dialogues to interactively evaluate LLMs' genuine understanding across domains, mitigating data contamination that inflates benchmarks scores without improving real-world effectiveness.</b>
-  
-      <img src="./static/images/teaser.png" alt="teaser">
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Automatic evaluation methods for large language models (LLMs) are hindered by data contamination, leading to inflated assessments of their effectiveness. Existing strategies, which aim to detect contaminated texts, focus on quantifying contamination status instead of accurately gauging model performance. In this paper, we introduce KIEval, a Knowledge-grounded Interactive Evaluation framework, which incorporates an LLM-powered "interactor" role for the first time to accomplish a dynamic contamination-resilient evaluation. Starting with a question in a conventional LLM benchmark involving domain-specific knowledge, KIEval utilizes dynamically generated, multi-round, and knowledge-focused dialogues to determine whether a model's response is merely a recall of benchmark answers or demonstrates a deep comprehension to apply knowledge in more complex conversations. Extensive experiments on seven leading LLMs across five datasets validate KIEval's effectiveness and generalization. We also reveal that data contamination brings no contribution or even negative effect to models' real-world applicability and understanding, and existing contamination detection methods for LLMs can only identify contamination in pre-training but not during supervised fine-tuning.
-          </p>
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-16">
+        <!-- Overview -->
+      
+        <section class="mb-16">
+            <p class="text-lg leading-relaxed">As the field of artificial intelligence marvels at the performance of large language models like GPT-4 and Claude 3, a crucial question arises: Are we truly evaluating these models objectively? The current evaluation methods for large models are plagued by data contamination.</p>
+            <div class="image-container my-8">
+              <img src="static/images/compare.png" alt="Comparison of KIEval and traditional methods" class="rounded-lg shadow-lg object-cover">
+            </div>
+            <h3 class="text-2xl font-semibold mt-6 mb-2">Data Contamination</h3>
+            <p class="text-lg leading-relaxed">Data contamination occurs when models encounter test set data during training, leading to inflated performance metrics. This issue is not fully recognized in the industry, as many models train on complex data sources, making it hard to avoid leaks of test data. Some models even train directly on test sets to achieve higher scores, artificially boosting their performance and potentially misleading research.</p>
+            <h3 class="text-2xl font-semibold mt-6 mb-2">Existing Methods vs KIEval</h3>
+            <p class="text-lg leading-relaxed">Current methods to detect data contamination are limited in effectiveness, especially during the Supervised Fine-Tuning (SFT) phase. While these methods work relatively well for pre-training, they perform poorly in detecting data leaks during SFT. KIEval is proposed to address these challenges. KIEval is not only an effective evaluation method for LLMs, but also helps to detect data contamination. It is a knowledge-based dynamic interactive evaluation framework designed to assess a model's knowledge generalization and application abilities through multi-round dialogue interactions.</p>
+            <div class="image-container my-8">
+              <img src="static/images/main-pipeline.png" alt="KIEval Pipeline" class="rounded-lg shadow-lg object-cover">
+            </div>
+            <h3 class="text-2xl font-semibold mt-6 mb-2">How KIEval Works</h3>
+            <ol class="list-decimal list-inside space-y-2 text-lg leading-relaxed">
+                <li><strong>Dynamic Interactions:</strong> KIEval introduces an "interactor" model that engages in multi-round dialogues with the evaluated model. Each round generates new, deeper questions based on previous responses, testing the model's knowledge application and coherence.</li>
+                <li><strong>Evaluation Process:</strong> An initial question from a high-quality dataset starts the dialogue. The "interactor" then generates follow-up questions to probe deeper. An "evaluator" model assesses responses for relevance, coherence, and logic.</li>
+                <li><strong>Advantages:</strong> This method reduces the impact of data contamination and comprehensively evaluates the model's abilities beyond simple pattern matching.</li>
+            </ol>
+        </section>
+        <div class="image-container my-8">
+          <img src="static/images/experiments-main.png" alt="Experimental Results" class="rounded-lg shadow-lg object-cover">
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
+        <!-- Insights and Experimental Analysis -->
+        <section class="mb-16">
+            <h3 class="text-3xl font-bold mb-4">Insights from KIEval</h3>
+            <ol class="list-decimal list-inside space-y-2 text-lg leading-relaxed">
+                <li><strong>Performance Gaps:</strong> Traditional benchmarks often underestimate performance differences between models. KIEval's dynamic dialogues reveal significant disparities in knowledge application and logical reasoning that static datasets miss.</li>
+                <li><strong>Impact of Data Contamination:</strong> Experiments with "cheating" models showed that data contamination leads to high test scores but poor performance in dynamic dialogues. This indicates that contaminated models memorize answers rather than understanding them.</li>
+                <li><strong>Evaluating Knowledge Depth:</strong> KIEval scores, compared with static dataset accuracy, help infer data leakage. High accuracy but poor dynamic response suggests memorization rather than true understanding.</li>
+                <li><strong>Correlation with Human Evaluation:</strong> KIEval scores correlate highly with human evaluations, proving its effectiveness and alignment with human judgment in dialogue quality.</li>
+                <section class="mb-16">
+                  <div class="overflow-x-auto">
+                      <table class="min-w-full divide-y divide-gray-200">
+                          <thead class="bg-gray-50">
+                              <tr>
+                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Metric</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Pearson</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Spearman</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Kendall-Tau</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Variance</th>
+                              </tr>
+                          </thead>
+                          <tbody class="bg-white divide-y divide-gray-200">
+                              <tr class="bg-gray-100">
+                                  <td class="px-4 py-2 text-sm text-gray-500">METEOR</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.016</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.023</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.021</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.012</td>
+                              </tr>
+                              <tr>
+                                  <td class="px-4 py-2 text-sm text-gray-500">ROUGE-1</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.259</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.316</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.226</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.016</td>
+                              </tr>
+                              <tr class="bg-gray-100">
+                                  <td class="px-4 py-2 text-sm text-gray-500">ROUGE-2</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.280</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.303</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.223</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.007</td>
+                              </tr>
+                              <tr>
+                                  <td class="px-4 py-2 text-sm text-gray-500">ROUGE-L</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.209</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.268</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.200</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.007</td>
+                              </tr>
+                              <tr class="bg-gray-100">
+                                  <td class="px-4 py-2 text-sm text-gray-500">BERTScore</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.189</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.336</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.250</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.001</td>
+                              </tr>
+                              <tr>
+                                  <td class="px-4 py-2 text-sm text-gray-500">MT-Bench</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.520</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.494</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.405</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">9.360</td>
+                              </tr>
+                              <tr class="bg-gray-100">
+                                  <td class="px-4 py-2 text-sm text-gray-700 font-bold">Ours</td>
+                                  <td class="px-4 py-2 text-sm text-gray-700 font-bold"></td>
+                                  <td class="px-4 py-2 text-sm text-gray-700 font-bold"></td>
+                                  <td class="px-4 py-2 text-sm text-gray-700 font-bold"></td>
+                                  <td class="px-4 py-2 text-sm text-gray-700 font-bold"></td>
+                              </tr>
+                              <tr>
+                                  <td class="px-4 py-2 text-sm text-gray-500">Accuracy</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.761</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.727</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.653</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">2.010</td>
+                              </tr>
+                              <tr class="bg-gray-100">
+                                  <td class="px-4 py-2 text-sm text-gray-500">Logic</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.768</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.735</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.661</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">1.842</td>
+                              </tr>
+                              <tr>
+                                  <td class="px-4 py-2 text-sm text-gray-500">Relevance</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.633</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.643</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.543</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">1.152</td>
+                              </tr>
+                              <tr class="bg-gray-100">
+                                  <td class="px-4 py-2 text-sm text-gray-500">Coherence</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.750</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.740</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.644</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">1.365</td>
+                              </tr>
+                              <tr>
+                                  <td class="px-4 py-2 text-sm text-gray-500">Conciseness</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.611</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.604</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.504</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.833</td>
+                              </tr>
+                              <tr class="bg-gray-100">
+                                  <td class="px-4 py-2 text-sm text-gray-500">Overall</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.814</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.789</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">0.721</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">1.512</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </section>
+              
+                <li><strong>Model Biases:</strong> Experiments show that while biases exist at the sample level, overall evaluation scores by different evaluator models are strongly correlated, indicating biases do not significantly affect conclusions.</li>
+                <section class="mb-16">
+                  <div class="overflow-x-auto">
+                      <table class="min-w-full divide-y divide-gray-200">
+                          <thead class="bg-gray-50">
+                              <tr>
+                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Model</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Evaluator</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Accuracy</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Logic</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Relevance</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Coherence</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Conciseness</th>
+                                  <th class="px-4 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Overall</th>
+                              </tr>
+                          </thead>
+                          <tbody class="bg-white divide-y divide-gray-200">
+                              <tr>
+                                  <td class="px-4 py-2 text-sm text-gray-500" rowspan="2">GPT-3.5</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">GPT-4</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">94.6</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">94.7</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">98.5</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">96.1</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">97.3</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">95.5</td>
+                              </tr>
+                              <tr>
+                                  <td class="px-4 py-2 text-sm text-gray-500">Claude-3</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">98.6</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">98.8</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">99.8</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">99.4</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">99.0</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">98.7</td>
+                              </tr>
+                              <tr>
+                                  <td class="px-4 py-2 text-sm text-gray-500" rowspan="2">LLaMA-2 70B</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">GPT-4</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">81.9</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">82.8</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">92.2</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">85.3</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">75.6</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">84.1</td>
+                              </tr>
+                              <tr>
+                                  <td class="px-4 py-2 text-sm text-gray-500">Claude-3</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">98.3</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">98.7</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">98.2</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">96.9</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">84.6</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">96.4</td>
+                              </tr>
+                              <tr>
+                                  <td class="px-4 py-2 text-sm text-gray-500" rowspan="2">LLaMA-2 7B</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">GPT-4</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">70.6</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">71.6</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">90.4</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">77.9</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">71.7</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">74.4</td>
+                              </tr>
+                              <tr>
+                                  <td class="px-4 py-2 text-sm text-gray-500">Claude-3</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">90.9</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">91.8</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">98.0</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">95.0</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">85.2</td>
+                                  <td class="px-4 py-2 text-sm text-gray-500">91.0</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </section>
+            </ol>
+            
+        </section>
 
-<!--BibTex citation -->
+        <!-- Conclusion -->
+        <section class="mb-16">
+            <h3 class="text-3xl font-bold mb-4">Conclusion</h3>
+            <p class="text-lg leading-relaxed">KIEval provides a robust framework for dynamic, interactive evaluation of large language models, reducing the impact of data contamination and offering deeper insights into a model's true capabilities. It shifts the focus from static evaluation to a more comprehensive assessment of knowledge understanding and application.</p>
+        </section>
 
-<section class="section is-light" id="BibTeX">
-  <div class="container is-max-desktop has-text-left content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@misc{yu2024kieval,
+       
+      
+
+        <!-- Citation -->
+        <section>
+            <h2 class="text-3xl font-bold mb-4">Citation</h2>
+            <p>If you find our work helpful, please consider citing us with:</p><br>
+            <pre class="bg-gray-200 p-4 rounded-lg overflow-x-auto text-sm">@misc{yu2024kieval,
   title={KIEval: A Knowledge-grounded Interactive Evaluation Framework for Large Language Models}, 
   author={Zhuohao Yu and Chang Gao and Wenjin Yao and Yidong Wang and Wei Ye and Jindong Wang and Xing Xie and Yue Zhang and Shikun Zhang},
   year={2024},
   eprint={2402.15043},
   archivePrefix={arXiv},
   primaryClass={cs.CL}
-}
-</code></pre>
-  </div>
-</section>
-<!--End BibTex citation -->
+}</pre>
+        </section>
 
+    </main>
 
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Zhuohao Yu. All rights reserved.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+    </footer>
+</body>
+</html>
