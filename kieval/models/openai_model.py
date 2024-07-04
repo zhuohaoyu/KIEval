@@ -134,6 +134,18 @@ class OpenAIClient:
         else:
             generation_config = self.generation_config
 
+        if "stop_sequences" in generation_config:
+            generation_config.pop("stop_sequences")
+
+        req_msg = request_dict["messages"]
+
+        if "claude" in self.model and request_dict["messages"][0]['role'] == 'system':
+            system_prompt = request_dict["messages"][0]['content']
+            req_msg = req_msg[1:]
+            req_msg[0]['content'] = system_prompt + req_msg[0]['content']
+
+        request_dict["messages"] = req_msg
+
         response = None
         while num_retries > 0:
             num_retries -= 1
