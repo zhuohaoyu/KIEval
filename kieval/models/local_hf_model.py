@@ -28,15 +28,16 @@ class SequenceStoppingCriteria(StoppingCriteria):
     def __init__(self, tokenizer, target_sequences, prompt):
         self.tokenizer = tokenizer
         self.target_sequences = target_sequences or []
-        self.prompt = prompt
+        self.initial_length = None
 
     def __call__(self, input_ids, scores, **kwargs):
         # Get the generated text as a string
-        generated_text = self.tokenizer.decode(
-            input_ids[0], skip_special_tokens=True, padding=False
-        )
-        generated_text = generated_text.replace(self.prompt, "")
-
+        if self.initial_length is None:
+            self.initial_length = len(input_ids[0])
+            return False  # Continue generation
+        
+        generated_text = self.tokenizer.decode(input_ids[0][self.initial_length:], skip_special_tokens=True, padding=False)
+        
         # Check if the target sequence appears in the generated text
         for target_sequence in self.target_sequences:
             if target_sequence in generated_text:
@@ -179,7 +180,7 @@ def run_one_problem(
         )
 
         if os.path.exists(save_path) and not trial_run:
-            with codecs.open(save_path) as f:
+            with codecs.open(save_path, encoding="utf-8") as f:
                 rsp_content = json.load(f)
             logging.debug(f"Skipping {save_path}")
             return rsp_content
@@ -219,30 +220,17 @@ def run_one_problem(
         }
 
     elif inference_mode == "loglikelihood":
-        input_tokens = tokenizer.encode(
-            request_dict["prompt"], padding=False, add_special_tokens=False
-        )
-        target_tokens = tokenizer.encode(
-            request_dict["choices"][0], padding=False, add_special_tokens=False
-        )
+        input_tokens = tokenizer.encode(request_dict["prompt"], padding=False, add_special_tokens=False)
+        target_tokens = tokenizer.encode(request_dict["choices"][0], padding=False, add_special_tokens=False)
 
         all_tokens = torch.tensor([input_tokens + target_tokens[:-1]], device=device)
         labels = torch.tensor([input_tokens[1:] + target_tokens], device=device)
 
         output = model(all_tokens, labels=labels)
-        log_softmax = torch.nn.functional.log_softmax(output.logits, dim=-1)[0][
-            -len(target_tokens) :
-        ]
-        target_logits = (
-            torch.gather(
-                log_softmax,
-                1,
-                torch.Tensor(target_tokens).unsqueeze(-1).type(torch.long).to(device),
-            )
-            .sum()
-            .cpu()
-            .item()
-        )
+        log_softmax = torch.nn.functional.log_softmax(output.logits, dim=-1)[0][-len(target_tokens):]
+        target_logits = torch.gather(
+            log_softmax, 1, torch.Tensor(target_tokens).unsqueeze(-1).type(torch.long).to(device)
+        ).sum().cpu().item()
 
         response = {
             "loglikelihood": target_logits,
@@ -250,12 +238,8 @@ def run_one_problem(
         }
 
     elif inference_mode == "lm_loss":
-        input_tokens = tokenizer.encode(
-            request_dict["prompt"], padding=False, add_special_tokens=False
-        )
-        target_tokens = tokenizer.encode(
-            request_dict["choices"][0], padding=False, add_special_tokens=False
-        )
+        input_tokens = tokenizer.encode(request_dict["prompt"], padding=False, add_special_tokens=False)
+        target_tokens = tokenizer.encode(request_dict["choices"][0], padding=False, add_special_tokens=False)
 
         all_tokens = torch.tensor([input_tokens + target_tokens[:-1]], device=device)
         labels = torch.tensor([input_tokens[1:] + target_tokens], device=device)
@@ -298,7 +282,7 @@ def run_one_problem(
         }
 
     if dump_individual_rsp:
-        with codecs.open(save_path, "w") as f:
+        with codecs.open(save_path, "w", encoding='utf-8') as f:
             json.dump(
                 {"request": request_dict, "response": response},
                 f,
@@ -347,7 +331,6 @@ def model_batch_inference(
 
     return preds
 
-
 def run_dataset_inference(
     dataset,
     model_path,
@@ -367,9 +350,7 @@ def run_dataset_inference(
 
     # set max_new_tokens to 20 if not specified
     if inference_mode == "default" and "max_new_tokens" not in generation_config:
-        logging.getLogger(__name__).warning(
-            "max_new_tokens not specified, setting default to 20"
-        )
+        logging.getLogger(__name__).warning("max_new_tokens not specified, setting default to 20")
         generation_config["max_new_tokens"] = 20
 
     num_models = num_gpus_total // num_gpus_per_model
@@ -379,7 +360,6 @@ def run_dataset_inference(
 
     if use_ray:
         import ray
-
         ray.init()
         get_answers_func = ray.remote(num_gpus=num_gpus_per_model)(
             model_batch_inference

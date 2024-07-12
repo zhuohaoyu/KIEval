@@ -100,8 +100,10 @@ class MultipleChoiceProblem(ABC):
         setattr(self, key, value)
 
     def generate_choices_text(self, choices_prompt_name="default"):
-        map_func = lambda x: (
-            chr(x + ord("A")) if self.choice_key_type == "letters" else str(x + 1)
+        map_func = (
+            lambda x: chr(x + ord("A"))
+            if self.choice_key_type == "letters"
+            else str(x + 1)
         )
 
         choice_keys = [map_func(i) for i in range(len(self.choices))]
@@ -121,8 +123,10 @@ class MultipleChoiceProblem(ABC):
         return choices_text
 
     def generate_output_text(self, choices_prompt_name="default"):
-        map_func = lambda x: (
-            (chr(x + ord("A")) if self.choice_key_type == "letters" else str(x + 1))
+        map_func = (
+            lambda x: (
+                chr(x + ord("A")) if self.choice_key_type == "letters" else str(x + 1)
+            )
             if type(x) == int
             else x
         )
@@ -131,14 +135,19 @@ class MultipleChoiceProblem(ABC):
             answer_text = map_func(self.permutation[self.answer])
         else:
             answer_text = map_func(self.answer)
+        
+        if isinstance(self.answer, str):
+            choice_text = self.answer
+        else:
+            choice_text = self.choices[self.answer]
 
-        return MULTIPLE_CHOICE_CHOICES_TMPL[choices_prompt_name].format(
-            choice_key=answer_text, choice_text=self.choices[self.answer]
-        )
+        return MULTIPLE_CHOICE_CHOICES_TMPL[choices_prompt_name].format(choice_key=answer_text, choice_text=choice_text)
 
     def generate_prediction_output_text(self, choices_prompt_name="default"):
-        map_func = lambda x: (
-            (chr(x + ord("A")) if self.choice_key_type == "letters" else str(x + 1))
+        map_func = (
+            lambda x: (
+                chr(x + ord("A")) if self.choice_key_type == "letters" else str(x + 1)
+            )
             if type(x) == int
             else x
         )
@@ -149,7 +158,7 @@ class MultipleChoiceProblem(ABC):
             answer_text = map_func(self.prediction_index)
 
         return MULTIPLE_CHOICE_CHOICES_TMPL[choices_prompt_name].format(
-            choice_key=answer_text, choice_text=self.choices[self.answer]
+            choice_key=answer_text, choice_text=self.choices[self.prediction_index]
         )
 
     def check_answer(self, answer: int):
@@ -163,8 +172,10 @@ class MultipleChoiceProblem(ABC):
         self, answer: str, parse_failed_value: Optional[int] = 0
     ):
         answer = answer.strip()
-        map_func = lambda x: (
-            (chr(x + ord("A")) if self.choice_key_type == "letters" else str(x + 1))
+        map_func = (
+            lambda x: (
+                chr(x + ord("A")) if self.choice_key_type == "letters" else str(x + 1)
+            )
             if type(x) == int
             else x
         )
@@ -213,6 +224,7 @@ class MultipleChoiceDataset(ABC):
             tokenizer_name_or_path=self.tokenizer_name_or_path,
             multiple_choice_template_name=self.multiple_choice_template_name,
             system_prompt=self.system_prompt,
+            add_generation_prompt=True,
         )
         for problem in self.problems:
             # Note if a problem is already assigned a prompt, we will not overwrite it. This allows to specify a custom prompt conveniently.

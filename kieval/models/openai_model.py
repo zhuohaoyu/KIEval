@@ -111,6 +111,10 @@ class OpenAIClient:
 
         if "messages" not in request_dict and "prompt" in request_dict:
             request_dict["messages"] = [{"role": "user", "content": request_dict["prompt"]}]
+        
+
+        if "messages" not in request_dict and "prompt" in request_dict:
+            request_dict["messages"] = [{"role": "user", "content": request_dict["prompt"]}]
 
         assert "messages" in request_dict, "messages must be provided in request"
         assert "uuid" in request_dict, "uuid must be provided in request"
