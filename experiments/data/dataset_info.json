@@ -1,0 +1,18 @@
+{
+  "sharegpt_hyper": {
+    "hf_hub_url": "totally-not-an-llm/sharegpt-hyperfiltered-3k",
+    "formatting": "sharegpt"
+  },
+  "merged_dataset_sft": {
+    "file_name": "sft-cheating.json"
+  },
+  "merged_dataset_pt": {
+    "file_name": "pt-cheating.json",
+    "columns": {
+      "prompt": "instruction"
+    }
+  },
+  "mtbench_gpt4_cheats_sft": {
+    "file_name": "mtbench-gpt4-outputs-cheating.json"
+  }
+}
