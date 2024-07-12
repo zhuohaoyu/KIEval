@@ -16,15 +16,13 @@ import random
 from kieval.prompts import PromptPostprocessor, TriloguePrompter
 from kieval.utils import parse_json
 
-# EVALUATOR_METRICS = ["conciseness", "relevance", "coherence", "accuracy", "reasoning"]
-
 EVALUATOR_METRICS = ["accuracy", "logic", "relevance", "coherence", "conciseness"]
 
 def weighted_mean(scores):
     score_mapper = {0: 0.0, 1: 1.0, 2: 3.0, 3: 7.0, 4: 10.0 }
     weights = [math.exp(-0.2 * index) for index in range(len(scores))]
     return (
-        sum(score_mapper[score] * weight for score, weight in zip(scores, weights))
+        sum(score_mapper.get(score, score / 4.0 * 10) * weight for score, weight in zip(scores, weights))
         / sum(weights)
         * 10.0
     )
