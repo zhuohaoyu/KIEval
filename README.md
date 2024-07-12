@@ -80,12 +80,11 @@ This repository provides all settings necessary for researchers to reproduce the
 
 
 ```bibtex
-@misc{yu2024kieval,
-      title={KIEval: A Knowledge-grounded Interactive Evaluation Framework for Large Language Models}, 
-      author={Zhuohao Yu and Chang Gao and Wenjin Yao and Yidong Wang and Wei Ye and Jindong Wang and Xing Xie and Yue Zhang and Shikun Zhang},
-      year={2024},
-      eprint={2402.15043},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@article{yu2024kieval,
+  title={KIEval: A Knowledge-grounded Interactive Evaluation Framework for Large Language Models}, 
+  author={Zhuohao Yu and Chang Gao and Wenjin Yao and Yidong Wang and Wei Ye and Jindong Wang and Xing Xie and Yue Zhang and Shikun Zhang},
+  journal={ArXiv},
+  year={2024},
+  volume={abs/2402.15043},
 }
 ```
