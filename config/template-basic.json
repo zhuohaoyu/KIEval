@@ -46,7 +46,7 @@
                 }
             },
             "eval_config": {
-                "aggregate_mode": "mean"
+                "aggregate_mode": "ignore_augmented"
             }
         },
         {

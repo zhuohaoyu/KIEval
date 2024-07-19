@@ -32,8 +32,7 @@ dataset_configs = {
             "config_name": "ARC-Challenge",
             "fewshot_split": "train",
             "fewshot_num": 5,
-        },
-        "augment_dataset_kwargs": {"num_instances": 4, "num_keeps": 1},
+        }
     },
     "ceval": {
         "type": "ceval",
@@ -42,8 +41,7 @@ dataset_configs = {
             "fewshot_split": "dev",
             "fewshot_num": 5,
             "name_or_path": "liyucheng/ceval_all",
-        },
-        "augment_dataset_kwargs": {"num_instances": 4, "num_keeps": 1},
+        }
     },
     "hellaswag": {
         "type": "hellaswag",
@@ -75,9 +73,8 @@ dataset_configs = {
             "config_name": "ARC-Easy",
             "fewshot_split": "train",
             "fewshot_num": 5,
-        },
-        "augment_dataset_kwargs": {"num_instances": 4, "num_keeps": 1},
-    },
+        }
+    }
 }
 
 with open(args.template) as f:

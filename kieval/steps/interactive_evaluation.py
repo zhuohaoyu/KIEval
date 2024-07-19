@@ -19,6 +19,8 @@ from kieval.utils import parse_json
 EVALUATOR_METRICS = ["accuracy", "logic", "relevance", "coherence", "conciseness"]
 
 def weighted_mean(scores):
+    if len(scores) == 0:
+        return 0.0
     score_mapper = {0: 0.0, 1: 1.0, 2: 3.0, 3: 7.0, 4: 10.0 }
     weights = [math.exp(-0.2 * index) for index in range(len(scores))]
     return (
